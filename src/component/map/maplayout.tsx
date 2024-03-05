@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
-import { CustomIcon } from "./customicon";
+// import { CustomIcon } from "./customicon";
+import { LatLngExpression } from "leaflet";
 
 interface MapLayoutProps {
   zoom?: number;
@@ -17,7 +18,7 @@ const MapLayout = (props: MapLayoutProps) => {
     <>
       <MapContainer
         style={{ height: "100%" }}
-        center={[0, 0]}
+        center={position as LatLngExpression}
         zoom={props.zoom}
         scrollWheelZoom={true}
       >
@@ -25,7 +26,8 @@ const MapLayout = (props: MapLayoutProps) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[0, 0]}>
+
+        <Marker position={position as LatLngExpression}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
