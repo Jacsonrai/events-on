@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { MarkerProps } from "react-leaflet";
 // interface PositionType {
 //   lat: number;
 //   long: number;
 // }
 export const useGeoLocation = () => {
   const [error, setError] = useState<string>("");
-  const [position, setPosition] = useState<number[] | null>(null);
+  const [position, setPosition] = useState<number[] | MarkerProps | null>(null);
   const [isloading, setIsLoading] = useState<boolean>(false);
   function getPosition() {
     if (!navigator.geolocation) {
