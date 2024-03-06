@@ -5,19 +5,15 @@ import { LatLngExpression } from "leaflet";
 
 interface MapLayoutProps {
   zoom?: number;
+  position: LatLngExpression;
 }
 
 const MapLayout = (props: MapLayoutProps) => {
-  const { isloading, position } = useGeoLocation();
-  // const { legalIcon } = CustomIcon();
-
-  return isloading ? (
-    <p>is loading</p>
-  ) : (
+  return (
     <>
       <MapContainer
         style={{ height: "100%" }}
-        center={position as LatLngExpression}
+        center={props.position as LatLngExpression}
         zoom={props.zoom}
         scrollWheelZoom={true}
       >
@@ -26,7 +22,7 @@ const MapLayout = (props: MapLayoutProps) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <Marker position={position as LatLngExpression}>
+        <Marker position={props.position as LatLngExpression}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>

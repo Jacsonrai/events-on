@@ -2,9 +2,14 @@ import React from "react";
 import MapLayout from "../component/map/maplayout";
 import useWindowDimensions from "../hooks/useWindowDimension";
 import LoginIcon from "../component/customicon/loginIcon";
+import { useGeoLocation } from "../hooks/useGeoLocation";
+import { LatLngExpression } from "leaflet";
 const Home = () => {
   const { height } = useWindowDimensions();
-  return (
+  const { isloading, position } = useGeoLocation();
+  return isloading ? (
+    <p>is loading</p>
+  ) : (
     <div style={{ height: height }} className=" relative">
       <div className="absolute z-[1000] top-7 flex justify-center w-full">
         <div className="border w-full flex items-center justify-between  ml-20 mr-20 bg-white rounded-2xl p-2 shadow-md">
@@ -28,7 +33,7 @@ const Home = () => {
         </div>
       </div>
 
-      <MapLayout zoom={16} />
+      <MapLayout zoom={16} position={position as LatLngExpression} />
     </div>
   );
 };
