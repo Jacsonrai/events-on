@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
-// import { CustomIcon } from "./customicon";
 import { LatLngExpression } from "leaflet";
 
 interface MapLayoutProps {
